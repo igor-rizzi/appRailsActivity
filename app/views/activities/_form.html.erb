@@ -1,0 +1,47 @@
+<%= form_with(model: activity, local: true) do |form| %>
+  <% if activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% activity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :metric %>
+    <%= form.text_field :metric %>
+  </div>
+
+  <div class="field">
+    <%= form.label :periodicity %>
+    <%= form.text_field :periodicity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.number_field :type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :method %>
+    <%= form.number_field :method %>
+  </div>
+
+  <div class="field">
+    <%= form.label :group_id %>
+    <%= form.select("group_id", @group_options, {include_blank: 'Selecione...'}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
